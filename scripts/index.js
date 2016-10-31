@@ -6,47 +6,32 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+
+import App from './containers/app';
+import Home from './containers/home';
+import Nekos from './containers/nekos';
+import Detail from './containers/nekos/detail';
+
 import './index.css';
 
 injectTapEventPlugin();
 
 class Root extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showMenu: false,
-    };
-  }
-
-  onMenuStateChange(showMenu) {
-    this.setState({ showMenu });
-  }
-
   render() {
     return (
-      <div>
-        <MuiThemeProvider>
-          <div>
-            <AppBar
-              title="React HandsOn vol.03"
-              onLeftIconButtonTouchTap={() => this.onMenuStateChange(true)}
-            />
-            <h1>Hello</h1>
-
-            <Drawer
-              docked={false}
-              open={this.state.showMenu}
-              width={200}
-              onRequestChange={show => this.onMenuStateChange(show)}
-            >
-              <MenuItem>Home</MenuItem>
-              <MenuItem>List</MenuItem>
-            </Drawer>
-          </div>
-        </MuiThemeProvider>
-      </div>
+      <MuiThemeProvider>
+        <Router history={hashHistory}>
+          <Route path="/" component={App}>
+            <IndexRoute component={Home} />
+            <Route path="/nekos" component={Nekos}>
+              <IndexRoute component={Detail} />
+              <Route path=":id" component={Detail} />
+            </Route>
+          </Route>
+        </Router>
+      </MuiThemeProvider>
     );
   }
 }

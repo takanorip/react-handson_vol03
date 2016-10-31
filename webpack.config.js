@@ -30,6 +30,10 @@ module.exports = {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',
       },
+      {
+        test: /\.jpg$/,
+        loader: 'file?name=[path][name].[ext]'
+      },
     ],
   },
   resolve: {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { Link } from 'react-router';
 
@@ -11,34 +12,57 @@ export default class Root extends Component {
     super(props);
 
     this.state = {
-      showMenu: false,
+      open: false,
     };
+    this.handleClose = this.handleClose.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  onMenuStateChange(showMenu) {
-    this.setState({ showMenu });
+  handleToggle() {
+    this.setState({open: !this.state.open});
+  }
+
+  handleClose() {
+    this.setState({open: false});
+  }
+
+  styles() {
+    return {
+      header: {
+        background: '#999',
+        boxShadow: 'none',
+        position: 'fixed',
+        top: '0',
+        left: '0'
+      }
+    }
   }
 
   render() {
+    const styles = this.styles();
     return (
       <div>
-        <AppBar
-          title="React HandsOn vol.03"
-          onLeftIconButtonTouchTap={() => this.onMenuStateChange(true)}
-        />
-        <Drawer
-          docked={false}
-          open={this.state.showMenu}
-          width={200}
-          onRequestChange={show => this.onMenuStateChange(show)}
-        >
-          <Link to="/"><MenuItem>Home</MenuItem></Link>
-          <Link to="/list"><MenuItem>List</MenuItem></Link>
-        </Drawer>
+        <MuiThemeProvider>
+          <div className="main">
+            <AppBar
+              title="React HandsOn vol.03"
+              onLeftIconButtonTouchTap={this.handleToggle}
+              style={styles.header}
+              />
 
-        {this.props.children}
+            <Drawer
+              docked={false}
+              open={this.state.open}
+              width={400}
+              onRequestChange={(open) => this.setState({open})}
+              >
+              <Link to="/"><MenuItem onTouchTap={this.handleClose}>TOP</MenuItem></Link>
+              <Link to="/nekos"><MenuItem onTouchTap={this.handleClose}>NEKOS</MenuItem></Link>
+            </Drawer>
+            {this.props.children}
+          </div>
+        </MuiThemeProvider>
       </div>
     );
   }
 }
-

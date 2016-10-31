@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { List, ListItem } from 'material-ui/List';
 
-import Items from './items';
+import Items from '../items.js';
 
 export default class ListPage extends Component {
 
@@ -11,7 +11,7 @@ export default class ListPage extends Component {
     return (
       <div>
         <List>
-          {Items.map(item => <Link key={item.id} to={`/list/${item.id}`}><ListItem primaryText={item.title} /></Link>)}
+          {Items.map(item => <Link key={item.id} to={`/nekos/${item.id}`}><ListItem primaryText={item.name} /></Link>)}
         </List>
 
         {/* ここにdetailが表示される */}

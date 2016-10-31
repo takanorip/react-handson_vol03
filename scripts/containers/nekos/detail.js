@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Items from './items';
+import Items from '../items';
 
 export default class Detail extends Component {
 
@@ -17,8 +17,8 @@ export default class Detail extends Component {
 
     return (
       <div>
-        <h2>{item.title}</h2>
-        <p>{item.contents}</p>
+        <h2>{item.name}</h2>
+        <p><img src={item.nekoImage} /></p>
       </div>
     );
   }

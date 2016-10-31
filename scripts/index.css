@@ -2,3 +2,83 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+.main {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+  background-color: #fff;
+  color: #333;
+}
+
+.kv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  background-image: url(../images/mainneko.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main_title {
+  color: #fff;
+  font-size: 64px;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 10px #333;
+}
+
+.section {
+  width: 1120px;
+  margin: auto;
+  padding: 64px 0 24px 0;
+}
+
+.sec_title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 32px;
+}
+
+.links {
+  display: flex;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.link {
+  width: calc(100%/3);
+  height: 240px;
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top left;
+}
+
+.link:nth-child(1) {
+  background-image: url(../images/neko1.jpg);
+}
+.link:nth-child(2) {
+  background-image: url(../images/neko2.jpg);
+}
+.link:nth-child(3) {
+  background-image: url(../images/neko3.jpg);
+}
+.link:nth-child(4) {
+  background-image: url(../images/neko4.jpg);
+}
+.link:nth-child(5) {
+  background-image: url(../images/neko5.jpg);
+}
+.link:nth-child(6) {
+  background-image: url(../images/neko6.jpg);
+}
+
+.link a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
